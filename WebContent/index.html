@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" class="app">
+   <head>
+      <meta charset="utf-8" />
+      <title>Evidencer | Login </title>
+      <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+      
+      <link rel="stylesheet" href="css/app.v1.css" type="text/css" />
+      <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+      <link rel="icon" href="favicon.ico" type="image/x-icon">
+      <link href="css/style.css" rel='stylesheet' type='text/css' />
+      <link href="css/responsive.css" rel='stylesheet' type='text/css' />
+      
+      <script src="js/1.11.1/jquery.min.js"></script>
+     
+      <script src="js/Controllers/webServerService.js"></script>
+      <script src="js/Controllers/loginController.js"></script>
+      
+   </head>
+   <body Style="background-color:white;background-image:url('images/bg4_01.jpg');background-repeat:no-repeat; background-size:   cover;                      /* <------ */
+      background-repeat: no-repeat;
+      background-position: center ;" >
+      <section class="vbox">
+         <section id="content">
+            <section class="vbox">
+               <section class="scrollable wrapper w-f">
+                  <div class="row">
+                     <div class="col-lg-6">
+                     </div>
+                     <div class="col-lg-6">
+                        <div class="login-form" >
+                           <br>
+                           <center>
+                              <img src="images/logo_white_new.png" height="180px" alt="" class="logImg" / >
+                           </center>
+                           <form role="form" method="post" action="#" data-validate="parsley" id="login_frm"  name="login_frm" data-validate="parsley" onsubmit=" return false;" >
+                              <center>
+                                 <div id="msg_box" style="display:none;color:#fff;font-size:10px;"></div>
+                              </center>
+                              <br>
+                              <input type="text" class="text" placeholder="Username" id="username" name="username"  data-required="true" data-parsley-group="block1" >
+                              <br><br>
+                              <input type="password" placeholder="Password" id="password" name="password"  data-required="true" data-parsley-group="block1" >
+                              <br><br>
+                              <div class="p-container">
+                                 <input type="submit" value="SIGN IN" >
+                                 <label style="color:#fff;"><a href="reset_password.html"><font color="white">Can't Access Account??</font></a></label><br><br><br>
+                                 <label class="regText" style="float:right;color:#fff;" ><a href="register.html"><font color="white">Register Now!!</font></a></label>
+                                 <div class="clear"> </div>
+                              </div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </section>
+            </section>
+            <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a> 
+         </section>
+      </section>
+      
+      <!-- App --> 
+      <script src="js/app.v1.js"></script> 
+      <script src="js/parsley/parsley.min.js"></script>
+      <script src="js/wizard/jquery.bootstrap.wizard.js"></script>
+      <script src="js/wizard/demo.js"></script> 
+      <script src="js/app.plugin.js"></script>
+   </body>
+</html>

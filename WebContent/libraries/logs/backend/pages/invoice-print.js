@@ -1,0 +1,1 @@
+"use strict";!function(a){"function"==typeof define&&define.amd?define([],a):a()}(function(){$(function(){window.print()})});

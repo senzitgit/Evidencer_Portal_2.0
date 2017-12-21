@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en" class="app">
+   <head>
+      <meta charset="utf-8" />
+      <title>Evidencer | Dashboard</title>
+      <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+      <link rel="stylesheet" href="css/app.v1.css" type="text/css" />
+      <link rel="stylesheet" href="css/sidebar.css" type="text/css" />
+      <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+      <link rel="icon" href="favicon.ico" type="image/x-icon">
+      <script src="js/1.11.1/jquery.min.js"></script>
+      <script src="js/Controllers/webServerService.js"></script>
+      <script src="js/Controllers/dashboardController.js"></script>
+     <script src="js/Controllers/sideBarController.js"></script>
+      <script src="js/Controllers/headerController.js"></script>
+      <Style>
+         .chart {
+         width: 100%;
+         }
+         .chart.chart-xs {
+         height: 150px;
+         }
+         .chart.chart-sm {
+         height: 184px;
+         }
+         .chart.chart-md {
+         height: 350px;
+         }
+         .chart.chart-lg {
+         height: 500px;
+      </Style>
+      <script>
+         var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+         var lineChartData = {
+         	labels : ["V9C6Y3","O7E8N6","N6P6U0","Y7I0M1","C3V5W5","R1S2V4","K6L8G3","S8C9G5","X9K3T4","U7V5V5"],
+         	datasets : [
+         		{
+         			label: "My Second dataset",
+         			fillColor : "rgba(0,0,0,0.2)",
+         			strokeColor : "rgba(0,0,0,1)",
+         			pointColor : "rgba(0,0,0,1)",
+         			pointStrokeColor : "#fff",
+         			pointHighlightFill : "#fff",
+         			pointHighlightStroke : "rgba(0,0,0,1)",
+         			data : [15,17,19,14,16,11,19,15,10,19]
+         		}
+         	]
+         
+         }
+         
+         window.onload = function(){
+         var ctx = document.getElementById("canvas").getContext("2d");
+         window.myLine = new Chart(ctx).Line(lineChartData, {
+         	responsive: true
+         });
+         }
+         
+         
+      </script>
+      <!--[if lt IE 9]> <script src="js/ie/html5shiv.js"></script> <script src="js/ie/respond.min.js"></script> 
+      <script src="js/ie/excanvas.js"></script> <![endif]-->
+   </head>
+   <body>
+      <section class="vbox">
+         <header class="bg-white header header-md navbar navbar-fixed-top-xs box-shadow">
+            <div class="navbar-header aside-md dk"> <a class="btn btn-link visible-xs" > 
+               <i class="fa fa-bars"></i> </a> 
+               <a href="dashboard.html" class="navbar-brand"> <img src="images/logo.png" Style="margin-left:-20px; height:40px" alt="scale"> </a> <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user"> <i class="fa fa-cog"></i> </a> 
+            </div>
+            <ul class="nav navbar-nav hidden-xs">
+               <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><font color="#000"> <i class="i i-grid"></i> </font></a> 
+                  <section class="dropdown-menu aside-lg bg-white on animated fadeInLeft">
+                     <div class="row m-l-none m-r-none m-t m-b text-center">
+                        <div class="col-xs-4">
+                           <div class="padder-v"> <a href="live_sessions.html"> <span class="m-b-xs block"> <i class="i i-signal i-2x text-primary-lt"></i> </span> <small class="text-muted">Live Stream</small> </a> </div>
+                        </div>
+                        <div class="col-xs-4">
+                           <div class="padder-v"> <a href="video_on_demand.html"> <span class="m-b-xs block"> <i class="i i-play i-2x text-danger-lt"></i> </span> <small class="text-muted">EviPlayer</small> </a> </div>
+                        </div>
+                        <div class="col-xs-4">
+                           <div class="padder-v"> <a href="initialize_record.html"> <span class="m-b-xs block"> <i class="i i-camera2 i-2x text-success-lt"></i> </span> <small class="text-muted">EviRecorder</small> </a> </div>
+                        </div>
+                     </div>
+                  </section>
+               </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right m-n hidden-xs nav-user user">
+               <li class="hidden-xs">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="i i-chat3"></i> <span class="badge badge-sm up bg-danger count">2</span> </a> 
+                  <section class="dropdown-menu aside-xl animated flipInY">
+                     <section class="panel bg-white">
+                        <div class="panel-heading b-light bg-light"> <strong>You have <span class="count">2</span> notifications</strong> </div>
+                        <div class="list-group list-group-alt"> <a href="#" class="media list-group-item"> <span class="pull-left thumb-sm"> <img src="images/a6.png" alt="..." class="img-circle"> </span> <span class="media-body block m-b-none"> New User Registration Is Pending Approval<br> <small class="text-muted">10 minutes ago</small> </span> </a> <a href="#" class="media list-group-item"> <span class="media-body block m-b-none">New Analytic Reports released<br> <small class="text-muted">1 hour ago</small> </span> </a> </div>
+                        <div class="panel-footer text-sm"> <a href="#" class="pull-right"><i class="fa fa-cog"></i></a> <a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a> </div>
+                     </section>
+                  </section>
+               </li>
+               <li class="dropdown" id="navBar">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+                  <span id="navPicPanel" class="thumb-sm avatar pull-left"><img src="" class="dker" alt="..."><i class="on md b-light"></i></span> <b></b> <b class="caret"></b> </a> 
+                  <ul class="dropdown-menu animated fadeInRight">
+                     <li> <a href="profile.html">Profile</a> </li>
+                     <li>  <a href="#"> <span class="badge bg-danger pull-right">3</span> Notifications </a> </li>
+                     <li> <a href="signout.html" >Logout</a> </li>
+                  </ul>
+               </li>
+            </ul>
+         </header>
+         <section>
+            <section class="hbox stretch">
+               <!-- .aside --> 
+               <aside class="bg-light lt b-r b-light aside-md hidden-print hidden-xs" id="nav">
+                  <section class="vbox">
+                     <section class="w-f scrollable">
+                        <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">
+                           <div class="clearfix wrapper dk nav-user hidden-xs" Style="background-color:#000; ">
+                              <div class="dropdown">
+                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <span id ="picPanel" class="thumb avatar pull-left m-r"></span> 
+                                    <span class="hidden-nav-xs clear">
+                                       <span class="block m-t-xs">
+                                          <strong class="font-bold text-lt">
+                                             <font color="white">
+                                                <div id="namePanel"></div>
+                                             </font>
+                                          </strong>
+                                       </span>
+                                       <span class="text-muted text-xs block">
+                                          <b>
+                                             <font color="#c6aa5d">
+                                                <div id="rolePanel"></div>
+                                             </font>
+                                          </b>
+                                       </span>
+                                    </span>
+                                 </a>
+                              </div>
+                           </div>
+                           <!-- nav --> 
+                           <nav class="nav-primary hidden-xs">
+                              <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Start</div>
+                              <ul class="nav nav-main" data-ride="collapse" id="sideBar"></ul>
+                              <div class="line dk hidden-nav-xs"></div>
+                           </nav>
+                           <!-- / nav --> 
+                        </div>
+                     </section>
+                     <footer class="footer hidden-xs no-padder text-center-nav-xs"> <a href="index.html" data-toggle="ajaxModal" class="btn btn-icon icon-muted btn-inactive pull-right m-l-xs m-r-xs hidden-nav-xs"> <i class="i i-logout"></i> </a> <a href="#nav" data-toggle="class:nav-xs" class="btn btn-icon icon-muted btn-inactive m-l-xs m-r-xs"> <i class="i i-circleleft text"></i> <i class="i i-circleright text-active"></i> </a> </footer>
+                  </section>
+               </aside>
+               <!-- /.aside --> 
+               <section id="content">
+                  <section class="vbox">
+                     <header class="header bg-white b-b b-light">
+                        <p>Dashboard</p>
+                     </header>
+                     <section class="scrollable wrapper w-f">
+                        <div class="row">
+                           <div class="col-sm-6">
+                              <div class="panel b-a">
+                                 <div class="row m-n">
+                                    <div class="col-md-7 b-b b-r"> <a href="initialize_record.html" class="block padder-v hover"> <span class="i-s i-s-2x pull-left m-r-sm"> <i class="i i-hexagon2 i-s-base text-danger hover-rotate"></i> <i class="i i-camera2 i-1x text-white"></i> </span> <span class="clear"> <span class="h3 block m-t-xs text-danger">Evi Recorder</span> <small class="text-muted text-u-c">Start A Case</small> </span> </a> </div>
+                                    <div class="col-md-5 b-b"> <a href="video_on_demand.html" class="block padder-v hover"> <span class="i-s i-s-2x pull-left m-r-sm"> <i class="i i-hexagon2 i-s-base text-success-lt hover-rotate"></i> <i class="i i-search i-sm text-white"></i> </span> <span class="clear"> <span class="h3 block m-t-xs text-success">Evi Player</span> <small class="text-muted text-u-c">Search Cases</small> </span> </a> </div>
+                                    <div class="col-md-7 b-b b-r"> <a href="live_sessions.html" class="block padder-v hover"> <span class="i-s i-s-2x pull-left m-r-sm"> <i class="i i-hexagon2 i-s-base text-info hover-rotate"></i> <i class="i i-signal i-sm text-white"></i> </span> <span class="clear"> <span class="h3 block m-t-xs text-info">Live Streaming<span class="text-sm"></span></span> <small class="text-muted text-u-c"><span id="numberOfCases"></span></small> </span> </a> </div>
+                                    <div class="col-md-5 b-b"> <a href="profile.html" class="block padder-v hover"> <span class="i-s i-s-2x pull-left m-r-sm"> <i class="i i-hexagon2 i-s-base text-primary hover-rotate"></i> <i class="i i-cog2 i-sm text-white"></i> </span> <span class="clear"> <span class="h3 block m-t-xs text-primary">Profile</span> <small class="text-muted text-u-c">Manage Profile</small> </span> </a> </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-sm-6">
+                              <div class="panel b-a">
+                                 <div class="panel-heading no-border bg-primary lt text-center"> <a href="#"> <i class="fa fa-legal fa fa-3x m-t m-b text-white"></i> </a> </div>
+                                 <div class="padder-v text-center clearfix">
+                                    <div class="col-xs-6 b-r">
+                                       <div class="h3 font-bold">5003</div>
+                                       <small class="text-muted">Cases</small> 
+                                    </div>
+                                    <div class="col-xs-6">
+                                       <div class="h3 font-bold">3257</div>
+                                       <small class="text-muted">Judgements</small> 
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-sm-6">
+                              <div class="panel b-a">
+                                 <div class="panel-heading no-border bg-info lter text-center"> <a href="#"> <i class="fa fa-users fa fa-3x m-t m-b text-white"></i> </a> </div>
+                                 <div class="padder-v text-center clearfix">
+                                    <div class="col-xs-6 b-r">
+                                       <div class="h3 font-bold">530</div>
+                                       <small class="text-muted">Users</small> 
+                                    </div>
+                                    <div class="col-xs-6">
+                                       <div class="h3 font-bold">120</div>
+                                       <small class="text-muted">Online</small> 
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-6" style="float:right;">
+                              <section class="panel panel-default">
+                                 <header class="panel-heading font-bold">Statistical Analysis Report - 2014</header>
+                                 <div class="panel-body">
+                                    <!-- Flot: Pie -->
+                                    <div class="chart chart-md" id="flotPie"></div>
+                                    <script type="text/javascript">
+                                       var flotPieData = [{
+                                       	label: "Civil Cases",
+                                       	data: [
+                                       		[1, 60]
+                                       	],
+                                       	color: '#9A611A'
+                                       }, {
+                                       	label: "Criminal",
+                                       	data: [
+                                       		[1, 10]
+                                       	],
+                                       	color: '#c6aa5d'
+                                       }, {
+                                       	label: "Family Cases",
+                                       	data: [
+                                       		[1, 15]
+                                       	],
+                                       	color: 'grey'
+                                       }, {
+                                       	label: "Probate Cases",
+                                       	data: [
+                                       		[1, 15]
+                                       	],
+                                       	color: 'black'
+                                       }];
+                                       
+                                       // See: libraries/assets/javascripts/ui-elements/examples.charts.js for more settings.
+                                       
+                                    </script>
+                                 </div>
+                              </section>
+                           </div>
+                           <div class="col-md-6" style="float:right;">
+                              <section class="panel panel-default">
+                                 <header class="panel-heading font-bold">Satisfactory Analytic Report Based On Judgement</header>
+                                 <div class="panel-body">
+                                    <!-- Flot: Bars -->
+                                    <div class="chart chart-md" id="flotBars"></div>
+                                    <script type="text/javascript">
+                                       var flotBarsData = [
+                                       					["Castor", 28],["Madonna", 42],
+                                       					["Fulton", 25],
+                                       					["Liberty", 23],
+                                       					["Leo", 37],
+                                       					["Teegan", 33],
+                                       					["Griffin", 18],
+                                       					["Sybil", 14],
+                                       					["Daryl", 18],
+                                       					["Mariko", 15]		
+                                       		
+                                       	];
+                                       
+                                       
+                                       
+                                       	// See: libraries/assets/javascripts/ui-elements/examples.charts.js for more settings.
+                                       
+                                    </script>
+                                 </div>
+                              </section>
+                           </div>
+                        </div>
+                        <br><br>
+                        <header class="panel-heading font-bold">Top Case Of The Year</header>
+                        <!-- .nav-justified --> 
+                        <section class="panel panel-default">
+                           <header class="panel-heading bg-light">
+                              <ul class="nav nav-tabs nav-justified">
+                                 <li class="active"><a href="#sec1" data-toggle="tab">2009</a></li>
+                                 <li><a href="#sec2" data-toggle="tab">2010</a></li>
+                                 <li><a href="#sec3" data-toggle="tab">2011</a></li>
+                                 <li><a href="#sec4" data-toggle="tab">2012</a></li>
+                                 <li><a href="#sec5" data-toggle="tab">2013</a></li>
+                              </ul>
+                           </header>
+                           <div class="panel-body">
+                              <div class="tab-content">
+                                 <div class="tab-pane active" id="sec1">Chandrashekhar Prasad Murder Case : Prasad was seen as a youth icon when he started his career in politics with the Communist Part of India Liberation. He was the student leader of student union of Jawaharlal Nehru University. He was passionate to change the politics scenario in India. But Prasad was shot dead on 31st March, 1997, in Siwan district of Bihar, when he was addressing a rally held by his party. Three sharpshooters, employed by strong politicians, were convicted and sentenced to life imprisonment after 15-year-long case hearing.</div>
+                                 <div class="tab-pane" id="sec2">INA Trials : Indian National Army was formed with the aim of acquiring independence to India with Japanese aid, in 1942. INA majorly constituted Indian prisoners of war, held by Japan. Formed and led by Subhash Chandra Bose, INA managed to shake the English. However, the agitation bought about by the INA couldn’t last for long. The British government made serious efforts to abandon this force and several top guns of INA were scrutinized by the British government on the charges of disobedience, revolt and sedition, etc. INA trials are widely known as Red Fort Trials, because the first court martial, was done in the Red Fort in Delhi in November 1945. All ten trials were held from November 1945 to May 1946. These trials are among the ‘rarest of rare cases’. And the reason is: during the time the trials were done, there was a widespread public outrage and the Tricolour of Congress waved in the sky with the Green flag of the Muslim League. Though the charges were of treason and conspiracy, but general masses of the British India supported these brave men and saw them as national heroes.</div>
+                                 <div class="tab-pane" id="sec3">Jessica Lal Murder Case : This high profile murder case occurred in the wee hours of 30th of April, 1999. A 34 year old, Delhi-based model, Jessica was shot dead just over a bottle of liquor. Jessica was working as a celebrity barmaid in a socialite party at a bar in Mehrauli, New Delhi. Approximately at 1:30 am, Manu Sharma, son of Venod Sharma, an influential leader of Congress party, approached Jessica and demanded for a bottle of liquor. Jessica sternly said no to their demand and reminded them of the rules of court of not selling liquor after 12:30 am. Arguments between Manu and Jessica continued for half an hour. During this time, Manu even offered a 1000 rupees note, which Jessica denied. Furious Manu took out his pistol and fired two shots consecutively. One shot hit the ceiling and another hit Jessica in head. This led to her instant death. After many consecutive hearings, Sharma was sentenced to life imprisonment on 20th of December, 2006.</div>
+                                 <div class="tab-pane" id="sec4">The Shah Bano Case : This case often used a benchmark by the court, is one of the most controversial cases of maintenance. Shah Bano, a 62 year old woman from Indore and mother of five, was divorced by her husband in 1978. Unable to provide even the basic necessities to her children, Shah Bano knocked the doors of court. The Supreme Court of India heard her plea and passed its judgment in the favour of Shah Bano, ruling that she should be given maintenance money every month. The SC called forth Section 125 of Code of Criminal Procedure, which appertains to all irrespective of caste, creed or religion. However, this judgment bought about a huge public dismal. The Muslim community opposed this decision, as it contradicted with the Muslim Sharia laws. In haste, the Congress government passed Muslim Women Act, 1986; which impoverished the Supreme Court’s decision and denied any kind of maintenance money or alimony to any Muslim woman after divorce. Sad but true! Bano lost to dirty politics.</div>
+                                 <div class="tab-pane" id="sec5">Ayodhya Case : This is one case that has strong political, historical and religious roots. Main issue revolves around a piece of land in Ayodhya, the birth place of Lord Rama. On 6th December, 1992, some violent Hindu activists demolished Babri Mosque which is thought to be located at the same place where Lord Rama was born and where a Ram Temple already existed. The act of destroying Mosque led to violent riots. Consequently, a case related to the entitlement of land was lodged in Allahabad court. The case got more and more controversial with time and the judgment came after 18 years. The judgment was totally unexpected and took care of religious sentiments of both communities. The court ruled that the 2.77 acres of land in Ayodhya be split up into 3 parts. One third of the land was registered to Hindu Mahasabha to build Ram temple, another one third to Sunni Waqf Board and the remaining one third be passed to Nirmohi Akhara (Hindu religious group).</div>
+                              </div>
+                           </div>
+                        </section>
+                        <!-- / .nav-justified --> 
+                        <div class="row">
+                           <div class="col-md-6" Style="width:100%">
+                              <section class="panel panel-default">
+                                 <header class="panel-heading font-bold">Cases With Top Number Of Hearings </header>
+                                 <div class="panel-body">
+                                    <canvas id="canvas" height="100" ></canvas>
+                                 </div>
+                              </section>
+                           </div>
+                        </div>
+                     </section>
+                  </section>
+               </section>
+            </section>
+         </section>
+      </section>
+      <!-- Bootstrap --> 
+      <div Style=" visibility: hidden;">
+         <div class="row">
+            <div class="col-md-6">
+               <section class="panel">
+                  <header class="panel-heading">
+                     <div class="panel-actions">
+                        <a href="#" class="fa fa-caret-down"></a>
+                        <a href="#" class="fa fa-times"></a>
+                     </div>
+                     <h2 class="panel-title">Basic Chart</h2>
+                     <p class="panel-subtitle">You don't have to do much to get an attractive plot. Create a placeholder, make sure it has dimensions (so Flot knows at what size to draw the plot), then call the plot function with your data.</p>
+                  </header>
+                  <div class="panel-body">
+                     <!-- Flot: Basic -->
+                     <div class="chart chart-md" id="flotBasic"></div>
+                     <script type="text/javascript">
+                        var flotBasicData = [{
+                        	data: [
+                        		[0, 170],
+                        		[1, 169],
+                        		[2, 173],
+                        		[3, 188],
+                        		[4, 147],
+                        		[5, 113],
+                        		[6, 128],
+                        		[7, 169],
+                        		[8, 173],
+                        		[9, 128],
+                        		[10, 128]
+                        	],
+                        	label: "Series 1",
+                        	color: "#0088cc"
+                        }, {
+                        	data: [
+                        		[0, 115],
+                        		[1, 124],
+                        		[2, 114],
+                        		[3, 121],
+                        		[4, 115],
+                        		[5, 83],
+                        		[6, 102],
+                        		[7, 148],
+                        		[8, 147],
+                        		[9, 103],
+                        		[10, 113]
+                        	],
+                        	label: "Series 2",
+                        	color: "#2baab1"
+                        }, {
+                        	data: [
+                        		[0, 70],
+                        		[1, 69],
+                        		[2, 73],
+                        		[3, 88],
+                        		[4, 47],
+                        		[5, 13],
+                        		[6, 28],
+                        		[7, 69],
+                        		[8, 73],
+                        		[9, 28],
+                        		[10, 28]
+                        	],
+                        	label: "Series 3",
+                        	color: "#734ba9"
+                        }];
+                        
+                        // See: libraries/assets/javascripts/ui-elements/examples.charts.js for more settings.
+                        
+                     </script>
+                  </div>
+               </section>
+            </div>
+            <div class="col-md-6">
+               <section class="panel">
+                  <header class="panel-heading">
+                     <div class="panel-actions">
+                        <a href="#" class="fa fa-caret-down"></a>
+                        <a href="#" class="fa fa-times"></a>
+                     </div>
+                     <h2 class="panel-title">Real-Time Chart</h2>
+                     <p class="panel-subtitle">You can update a chart periodically to get a real-time effect by using a timer to insert the new data in the plot and redraw it.</p>
+                  </header>
+                  <div class="panel-body">
+                     <!-- Flot: Curves -->
+                     <div class="chart chart-md" id="flotRealTime"></div>
+                  </div>
+               </section>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-6">
+               <section class="panel">
+                  <header class="panel-heading">
+                     <div class="panel-actions">
+                        <a href="#" class="fa fa-caret-down"></a>
+                        <a href="#" class="fa fa-times"></a>
+                     </div>
+                     <h2 class="panel-title">Bars Chart</h2>
+                     <p class="panel-subtitle">With the categories plugin you can plot categories/textual data easily.</p>
+                  </header>
+                  <div class="panel-body">
+                     <!-- Flot: Bars -->
+                     <div class="chart chart-md" id="flotBars"></div>
+                  </div>
+               </section>
+            </div>
+            <div class="col-md-6">
+               <section class="panel">
+                  <header class="panel-heading">
+                     <div class="panel-actions">
+                        <a href="#" class="fa fa-caret-down"></a>
+                        <a href="#" class="fa fa-times"></a>
+                     </div>
+                     <h2 class="panel-title">Pie Chart</h2>
+                     <p class="panel-subtitle">Default Pie Chart</p>
+                  </header>
+                  <div class="panel-body">
+                     <!-- Flot: Pie -->
+                     <div class="chart chart-md" id="flotPie"></div>
+                  </div>
+               </section>
+            </div>
+         </div>
+         <h2>Morris Charts</h2>
+         <p class="mb-lg">Good-looking charts shouldn't be difficult.</p>
+         <div class="row">
+            <div class="col-md-6">
+               <section class="panel">
+                  <header class="panel-heading">
+                     <div class="panel-actions">
+                        <a href="#" class="fa fa-caret-down"></a>
+                        <a href="#" class="fa fa-times"></a>
+                     </div>
+                     <h2 class="panel-title">Line Chart</h2>
+                     <p class="panel-subtitle">A style of chart that is created by connecting a series of data points together with a line.</p>
+                  </header>
+                  <div class="panel-body">
+                     <!-- Morris: Line -->
+                     <div class="chart chart-md" id="morrisLine"></div>
+                  </div>
+               </section>
+            </div>
+            <div class="col-md-6">
+               <section class="panel">
+                  <header class="panel-heading">
+                     <div class="panel-actions">
+                        <a href="#" class="fa fa-caret-down"></a>
+                        <a href="#" class="fa fa-times"></a>
+                     </div>
+                     <h2 class="panel-title">Donut Chart</h2>
+                     <p class="panel-subtitle">Donut Chart are functionally identical to pie charts.</p>
+                  </header>
+                  <div class="panel-body">
+                     <!-- Morris: Donut -->
+                     <div class="chart chart-md" id="morrisDonut"></div>
+                     <script type="text/javascript">
+                        var morrisDonutData = [{
+                        	label: "Porto Template",
+                        	value: 32
+                        }, {
+                        	label: "Tucson Template",
+                        	value: 18
+                        }, {
+                        	label: "Porto Admin",
+                        	value: 20
+                        }];
+                        
+                        // See: libraries/assets/javascripts/ui-elements/examples.charts.js for more settings.
+                        
+                     </script>
+                  </div>
+               </section>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-6">
+               <section class="panel">
+                  <header class="panel-heading">
+                     <div class="panel-actions">
+                        <a href="#" class="fa fa-caret-down"></a>
+                        <a href="#" class="fa fa-times"></a>
+                     </div>
+                     <h2 class="panel-title">Stacked Chart</h2>
+                     <p class="panel-subtitle">Stacked Bar Chart.</p>
+                  </header>
+                  <div class="panel-body">
+                     <!-- Morris: Area -->
+                     <div class="chart chart-md" id="morrisStacked"></div>
+                     <script type="text/javascript">
+                        var morrisStackedData = [{
+                        	y: '2004',
+                        	a: 10,
+                        	b: 30
+                        }, {
+                        	y: '2005',
+                        	a: 100,
+                        	b: 25
+                        }, {
+                        	y: '2006',
+                        	a: 60,
+                        	b: 25
+                        }, {
+                        	y: '2007',
+                        	a: 75,
+                        	b: 35
+                        }, {
+                        	y: '2008',
+                        	a: 90,
+                        	b: 20
+                        }, {
+                        	y: '2009',
+                        	a: 75,
+                        	b: 15
+                        }, {
+                        	y: '2010',
+                        	a: 50,
+                        	b: 10
+                        }, {
+                        	y: '2011',
+                        	a: 75,
+                        	b: 25
+                        }, {
+                        	y: '2012',
+                        	a: 30,
+                        	b: 10
+                        }, {
+                        	y: '2013',
+                        	a: 75,
+                        	b: 5
+                        }, {
+                        	y: '2014',
+                        	a: 60,
+                        	b: 8
+                        }];
+                        
+                        // See: libraries/assets/javascripts/ui-elements/examples.charts.js for more settings.
+                        
+                     </script>
+                  </div>
+               </section>
+            </div>
+         </div>
+      </div>
+      <div class="modal fade" id="no_streaming">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <div class="modal-body wrapper-lg">
+                  <div class="row">
+                     <center>
+                        <div class="fa fa-warning" Style="font-size:60px;"></div>
+                        <br><br>
+                        <b>Sorry!!! You are not privileged to access Evidencer Live Streaming Service.
+                        <br>Please contact your Administrator.
+                     </center>
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+               </div>
+            </div>
+         </div>
+         <!-- /.modal-content --> 
+      </div>
+      <div class="modal fade" id="no_record">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <div class="modal-body wrapper-lg">
+                  <div class="row">
+                     <center>
+                        <div class="fa fa-warning" Style="font-size:60px;"></div>
+                        <br><br>
+                        <b>Sorry!!! You are not privileged to access Evidencer Recorder Service.
+                        <br>Please contact your Administrator.
+                     </center>
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+               </div>
+            </div>
+         </div>
+         <!-- /.modal-content --> 
+      </div>
+      <div class="modal fade" id="no_vod">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <div class="modal-body wrapper-lg">
+                  <div class="row">
+                     <center>
+                        <div class="fa fa-warning" Style="font-size:60px;"></div>
+                        <br><br>
+                        <b>Sorry!!! You are not privileged to access Evidencer VOD Service.
+                        <br>Please contact your Administrator.
+                     </center>
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+               </div>
+            </div>
+         </div>
+         <!-- /.modal-content --> 
+      </div>
+      <!-- Vendor -->
+      <script src="libraries/assets/vendor/jquery/jquery.js"></script>		
+      <!-- Specific Page Vendor -->		<script src="libraries/assets/vendor/jquery-appear/jquery.appear.js"></script>		<script src="libraries/assets/vendor/jquery-easypiechart/jquery.easypiechart.js"></script>		<script src="libraries/assets/vendor/flot/jquery.flot.js"></script>		<script src="libraries/assets/vendor/flot-tooltip/jquery.flot.tooltip.js"></script>		<script src="libraries/assets/vendor/flot/jquery.flot.pie.js"></script>		<script src="libraries/assets/vendor/flot/jquery.flot.categories.js"></script>		<script src="libraries/assets/vendor/flot/jquery.flot.resize.js"></script>		<script src="libraries/assets/vendor/jquery-sparkline/jquery.sparkline.js"></script>		<script src="libraries/assets/vendor/raphael/raphael.js"></script>		<script src="libraries/assets/vendor/morris/morris.js"></script>		<script src="libraries/assets/vendor/gauge/gauge.js"></script>		<script src="libraries/assets/vendor/snap-svg/snap.svg.js"></script>		<script src="libraries/assets/vendor/liquid-meter/liquid.meter.js"></script>
+      <!-- Theme Base, Components and Settings -->
+      <script src="libraries/assets/javascripts/theme.js"></script>
+      <!-- Theme Custom -->
+      <script src="libraries/assets/javascripts/theme.custom.js"></script>
+      <!-- Theme Initialization Files -->
+      <script src="libraries/assets/javascripts/theme.init.js"></script>
+      <!-- Analytics to Track Preview Website -->		<script>		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)		  })(window,document,'script','../../../www.google-analytics.com/analytics.js','ga');		  ga('create', 'UA-42715764-8', 'auto');		  ga('send', 'pageview');		</script>
+      <!-- Examples -->
+      <script src="libraries/assets/javascripts/ui-elements/examples.charts.js"></script>
+      <!-- App --> 
+      <script src="js/app.v1.js"></script> 
+      <script src="js/app.plugin.js"></script>
+      <script src="js/Chart.js"></script>
+   </body>
+</html>

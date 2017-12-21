@@ -1,0 +1,1 @@
+"use strict";!function(a){"function"==typeof define&&define.amd?define(["stellar"],a):a()}(function(){$(function(){$.stellar({horizontalScrolling:!1})})});

@@ -1,0 +1,305 @@
+<html lang="en" class="app">
+   <head>
+      <meta charset="utf-8" />
+      <title>Evidencer | Create Account</title>
+      <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+      <link rel="stylesheet" href="css/app.v1.css" type="text/css" />
+      <link rel="stylesheet" href="css/style_register.css" type="text/css" />
+      <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+      <link rel="icon" href="favicon.ico" type="image/x-icon">
+      <link href="css/style.css" rel='stylesheet' type='text/css' />
+      <link href="css/responsive.css" rel='stylesheet' type='text/css' />
+      <script src="js/1.11.1/jquery.min.js"></script>
+      <script src="js/Controllers/webServerService.js"></script>
+      <script src="js/Controllers/registrationController.js"></script>
+   </head>
+   <body Style="background-color:white;background-image:url('images/bg4_01.jpg');background-repeat:no-repeat; background-size:   cover;                      /* <------ */
+      background-repeat: no-repeat;
+      background-position: center center;"  >
+      <section class="vbox">
+         <section id="content">
+            <section class="vbox">
+               <section class="scrollable wrapper w-f">
+                  <div class="row">
+                     <div class="col-lg-6"></div>
+                     <div class="col-lg-6">
+                        <div id="firstStep" style="display:block;">
+                           <div class="login-form">
+                              <center>
+                                 <img src="images/logo_white_new.png" height="180px" class="logImg" alt=""/>
+                                 <div id="msg_box" style="display:none;color:#fff;font-size:10px;"></div>
+                              </center>
+                              <form data-validate="parsley" id="first_frm"  name="first_frm" method="post" action="#">
+                                 <div class="row">
+                                    <div class="createAc">
+                                       <h2 class="" style=" color: #fff;
+                                          font-size: 25px;
+                                          padding-bottom: 8px;
+                                          font-weight: 400;">
+                                          <div class="fa fa-user"></div>
+                                          &nbsp;&nbsp;&nbsp;Create Account
+                                       </h2>
+                                    </div>
+                                    <br>
+                                    <div class="col-lg-6">
+                                       <input type="text" name="name" id="name" placeholder="Name"  pattern="[a-zA-Z ]+"  style="width:100%" data-rangelength="[2,10]" data-required="true" autocomplete="off" >
+                                    </div>
+                                    <div class="col-lg-6">
+                                       <input type="text" name="username" id="username" placeholder="Username"  pattern="[a-zA-Z ]+" data-required="true" autocomplete="off" data-rangelength="[8,20]" style="width:100%;"><br><br>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="col-lg-6">
+                                       <input type="password" name="password" placeholder="Password" data-required="true" data-type="alphanum" data-rangelength="[8,15]" autocomplete="off" id="pwd" style="width:100%">
+                                    </div>
+                                    <div class="col-lg-6">
+                                       <input type="password" name="cpassword" placeholder="Confirm Password" data-required="true" data-type="alphanum" data-rangelength="[8,15]" autocomplete="off" data-equalto="#pwd"  style="width:100%"><br><br>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="col-lg-6">
+                                       <input type="text" name="mobile" id="mobile" placeholder="Mobile Number" data-required="true" data-type="number" data-rangelength="[10,15]" autocomplete="off" style="width:100%">
+                                    </div>
+                                    <div class="col-lg-6">
+                                       <input type="text" name="email" id="email" placeholder="Email Address" data-required="true" data-type="email" autocomplete="off" style="width:100%" ><br><br>
+                                    </div>
+                                 </div>
+                                 <div class="col-lg-12" style="margin-bottom:30px">
+                                    <font color="white" size="1" style="italic">* All Fields are Mandatory</font>
+                                 </div>
+                                 <div class="button-bottom">
+                                    <div class="button">
+                                       <span class="tick"> </span>
+                                       <input type="submit" value="Register" id="firstSubmit" />	
+                                       <label style="color:#fff;">
+                                          <a href="index.html">
+                                             <font color="white">
+                                                <div class="fa fa-chevron-left"></div>
+                                                Back To Login 
+                                             </font>
+                                          </a>
+                                       </label>
+                                    </div>
+                                    <div class="clear"> </div>
+                                 </div>
+                              </form>
+                           </div>
+                        </div>
+                        <div id="secondStep" style="display:none;">
+                           <div class="login-form">
+                              <center>
+                                 <img src="images/logo_white_new.png" height="180px" alt=""/>
+                                 <div id="msg_box1" style="display:none;color:#fff;font-size:10px;"></div>
+                              </center>
+                              <form data-validate="parsley" id="second_frm"  name="second_frm" method="post" action="#">
+                                 <div class="row">
+                                    <h2 style=" color: #fff;
+                                       font-size: 25px;
+                                       padding-bottom: 8px;
+                                       font-weight: 400;">
+                                       <div class="fa fa-user"></div>
+                                       &nbsp;&nbsp;&nbsp;Create Account
+                                    </h2>
+                                    <br>
+                                    <p style="color:#fff;font-size:10px;">An Email code and SMS code has been sent to your registered Email & Phone Number. To complete your registration, please enter the security codes below.</p>
+                                    <br><br>
+                                    <div class="col-lg-6">
+                                       <input type="text" name="emailCode" id="emailCode" placeholder="Email Code" data-required="true" autocomplete="off" style="width:100%" data-maxlength="5" data-type="number">
+                                    </div>
+                                    <div class="col-lg-6">
+                                       <input type="text" name="smsCode" id="smsCode" placeholder="SMS Code" data-required="true"  autocomplete="off" style="width:100%"  data-maxlength="5" data-type="number"><br><br>
+                                    </div>
+                                 </div>
+                                 <div class="col-lg-12" style="margin-bottom:30px">
+                                    <font color="white" size="1" style="italic">* All Fields are Mandatory</font>                                 
+                                 </div>
+                                 <div class="button-bottom">
+                                    <div class="button">
+                                       <span class="tick"> </span>
+                                       <input type="submit" value="Verify" id="secondSubmit"/>	
+                                       <label style="color:#fff;">
+                                          <a href="index.html">
+                                             <font color="white">
+                                                <div class="fa fa-chevron-left"></div>
+                                                Back To Login 
+                                             </font>
+                                          </a>
+                                       </label>
+                                    </div>
+                                    <div class="clear"> </div>
+                                 </div>
+                              </form>
+                           </div>
+                        </div>
+                        <div id="thirdStep" style="display:none;">
+                           <div class="login-form" style="width:100%">
+                              <center>
+                                 <img src="images/logo_white_new.png" height="120px" alt=""/>
+                                 <div id="msg_box2" style="display:none;color:#fff;font-size:10px;"></div>
+                              </center>
+                              <form data-validate="parsley" id="third_frm"  name="third_frm" method="post" action="#">
+                                 <div class="row">
+                                    <h2 style=" color: #fff;
+                                       font-size: 25px;
+                                       padding-bottom: 8px;
+                                       font-weight: 400;">
+                                       <div class="fa fa-user"></div>
+                                       &nbsp;&nbsp;&nbsp;Create Account
+                                    </h2>
+                                    <br>
+                                    <p style="color:#fff;font-size:12px;">Please Complete Your Profile To Continue..</p>
+                                    <br><br> 
+                                    <div class="col-lg-4">
+                                       <input type="text"  name="conffname" id="conffname" placeholder="First Name"  value="First Name" data-required="true" data-type="digits" style="width:100%" data-rangelength="[2,10]" readOnly>
+                                    </div>
+                                    <div class="col-lg-4">
+                                       <input type="text"  name="mname"  id="mname" placeholder="Middle Name" pattern="[a-zA-Z ]+" data-required="true" data-type="digits" style="width:100%" data-rangelength="[2,10]"> 
+                                    </div>
+                                    <div class="col-lg-4">
+                                       <input type="text"  name="lname"  id="lname" placeholder="Last Name" pattern="[a-zA-Z ]+" data-required="true" data-type="digits" style="width:100%" data-rangelength="[2,10]"> 
+                                    </div>
+                                 </div>
+                                 <br>
+                                 <div class="row">
+                                    <div class="col-lg-4">
+                                       <input type="text"  name="confusername"  id="confusername" placeholder="Username" value="username" data-required="true" data-type="digits" style="width:100%" disabled> 
+                                    </div>
+                                    <div class="col-lg-4">
+                                       <input type="text"  name="smobile" id="smobile" placeholder="Secondary Mobile" data-required="true" data-type="number" data-rangelength="[10,15]" style="width:100%"> 
+                                    </div>
+                                    <div class="col-lg-4">
+                                       <input type="text"  name="semail"  id="semail" placeholder="Secondary Email" data-required="true" data-type="email" style="width:100%" > 
+                                    </div>
+                                 </div>
+                                 <br>
+                                 <div class="row">
+                                    <div class="col-lg-8">
+                                       <select name="secq1" id="secq1"  Style="width:100%" data-required="true">
+                                          <option value="" disabled selected>Security Question 1</option>
+                                          <option value="What was your childhood nickname?">
+                                             What was your childhood nickname?
+                                          </option>
+                                          <option value="What was the name of your elementary / primary school?">
+                                             What was the name of your elementary / primary school?
+                                          </option>
+                                          <option value="In what county where you born?">
+                                             In Which country you were born?
+                                          </option>
+                                          <option value="What is your favorite movie?">
+                                             What is your favorite movie?
+                                          </option>
+                                          <option value="What year did you graduate from High School?">
+                                             What year did you graduate from High School?
+                                          </option>
+                                       </select>
+                                    </div>
+                                    <div class="col-lg-4">					
+                                       <input type="text"  name="seca1" id="seca1" placeholder="Security Answer 1" data-required="true" data-type="digits" data-rangelength="[2,15]"> 			
+                                    </div>
+                                 </div>
+                                 <br>						
+                                 <div class="row">
+                                    <div class="col-lg-8">
+                                       <select name="secq2"  id="secq2" Style="width:100%" data-required="true">
+                                          <option value="" disabled selected>Security Question 2</option>
+                                          <option value="What is your pet's name?">
+                                             What is your pet's name?
+                                          </option>
+                                          <option value="What is your favorite sport?">
+                                             What is your favorite sport?
+                                          </option>
+                                          <option value="Who was your childhood hero?">
+                                             Who was your childhood hero?
+                                          </option>
+                                          <option value="Which is your favorite book?">
+                                             Which is your favorite book?
+                                          </option>
+                                          <option value="What is the color of your eyes?">
+                                             What is the color of your eyes?
+                                          </option>
+                                       </select>
+                                    </div>
+                                    <div class="col-lg-4">							
+                                       <input type="text"  name="seca2" id="seca2" placeholder="Security Answer 2" data-required="true" data-type="digits" data-rangelength="[2,15]"> 						
+                                    </div>
+                                 </div>
+                                 <br>					
+                                 <div class="row">
+                                    <div class="col-lg-8">
+                                       <select name="secq3"  id="secq3" Style="width:100%" data-required="true">
+                                          <option value="" disabled selected>Security Question 3</option>
+                                          <option value="What is your favorite team?">
+                                             What is your favorite team?
+                                          </option>
+                                          <option value="What is the name of your hometown newspaper?">
+                                             What is the name of your hometown newspaper?
+                                          </option>
+                                          <option value="What is the name of the first school you attended?">
+                                             What is the name of the first school you attended?
+                                          </option>
+                                          <option value="What is the name of your favorite teacher?">
+                                             What is the name of your favorite teacher?
+                                          </option>
+                                          <option value="Who is your favorite author?">
+                                             Who is your favorite author?
+                                          </option>
+                                       </select>
+                                    </div>
+                                    <div class="col-lg-4">						
+                                       <input type="text"  name="seca3" id="seca3" placeholder="Security Answer 3" data-required="true" data-type="digits" data-rangelength="[2,15]"> 						
+                                    </div>
+                                 </div>
+                                 <div class="col-lg-12" style="margin-top:20px">
+                                    <font color="white" size="1" style="italic">* All Fields are Mandatory</font>                                 
+                                 </div>
+                                 <br><br>				
+                                 <div class="button-bottom">
+                                    <div class="button">
+                                       <span class="tick"> </span>
+                                       <input type="submit" value="Done"/>					
+                                    </div>
+                                    <div class="clear"> </div>
+                                 </div>
+                              </form>
+                           </div>
+                        </div>
+                        <div id="succesStep" style="display:none;">
+                           <div class="login-form">
+                              <center>
+                                 <img src="images/logo_white_new.png" height="180px" alt=""/>
+                                 <div id="msg_box1" style="display:none;color:#fff;font-size:10px;"></div>
+                              </center>
+                              <form  method="post" action="index.html">
+                                 <center>
+                                    <div class="glyphicon glyphicon-saved" style="color:#fff;font-size:100px;"></div>
+                                 </center>
+                                 <div style="color:#fff;font-size:12px;">
+                                    <br><br>  Your profile has been created and is pending approval by Administrator.
+                                    We will nofity once the request is approved!!<br><br>
+                                 </div>
+                                 <div class="button-bottom">
+                                    <div class="button">
+                                       <span class="tick"> </span>
+                                       <input type="submit" value="Login Page"/>					
+                                    </div>
+                                    <div class="clear"> </div>
+                                 </div>
+                              </form>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </section>
+            </section>
+            <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a> 
+         </section>
+      </section>
+      </section> </section> <!-- Bootstrap --> 
+      <script src="js/app.v1.js"></script>
+      <script src="js/parsley/parsley.min.js"></script>
+      <script src="js/wizard/jquery.bootstrap.wizard.js"></script>
+      <script src="js/wizard/demo.js"></script> 
+      <script src="js/app.plugin.js"></script>
+   </body>
+</html>

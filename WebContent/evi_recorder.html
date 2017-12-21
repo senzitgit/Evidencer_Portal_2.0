@@ -1,0 +1,530 @@
+<html lang="en" class="app">
+   <head>
+      <meta charset="utf-8" />
+      <title>Evidencer | Recorder</title>
+      <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+     
+     
+      <link rel="stylesheet" href="css/app.v1.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="libraries/assets/css/styles.css" />
+      <link rel="stylesheet" type="text/css" href="libraries/assets/fancybox/jquery.fancybox-1.3.4.css" />
+      <link href="libraries/ddmenu/ddmenu.css" rel="stylesheet" type="text/css" />
+      <link rel="stylesheet" href="css/sidebar.css" type="text/css" />
+      
+      
+      <script src="js/1.11.1/jquery.min.js"></script>
+      <script type="text/javascript" src="libraries/jwplayer/jwplayer.js" ></script>
+      <script type="text/javascript">jwplayer.key="J0+IRhB3+LyO0fw2I+2qT2Df8HVdPabwmJVeDWFFoplmVxFF5uw6ZlnPNXo=";</script>
+      <script src="libraries/ddmenu/ddmenu.js" type="text/javascript"></script>
+      <script src="js/Controllers/webServerService.js"></script>
+      <script src="js/Controllers/headerController.js"></script>
+      <script src="js/Controllers/recordController.js"></script>
+      <script src="js/Controllers/recordButtonController.js"></script>
+     <script src="js/Controllers/sideBarController.js"></script>
+      <script src="libraries/assets/fancybox/jquery.easing-1.3.pack.js"></script>
+      <script src="libraries/assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+      <script src="libraries/assets/webcam/webcam.js"></script>
+      <script src="libraries/assets/js/script.js"></script>
+      
+      <script>
+         $(document).ready(function() {
+         
+         $('.active')
+             .mouseenter(function() {
+             	$('.activeUser').show();
+             });
+             
+             
+         });    
+             
+             
+      </script>
+      <style>
+         .i-s>i {
+         left: 18px; 
+         top: -9px;
+         }
+      </style>
+      <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+      <link rel="icon" href="favicon.ico" type="image/x-icon">
+      <!--[if lt IE 9]> <script src="js/ie/html5shiv.js"></script> <script src="js/ie/respond.min.js"></script> 
+      <script src="js/ie/excanvas.js"></script> <![endif]-->
+   </head>
+   <body class="" onload="stopwatch()" >
+      <section class="vbox">
+         <header class="bg-white header header-md navbar navbar-fixed-top-xs box-shadow">
+            <div class="navbar-header aside-md dk"> <a class="btn btn-link visible-xs" > 
+               <i class="fa fa-bars"></i> </a> <a href="dashboard.html" class="navbar-brand" style="display:inline !important;"> <img src="images/logo.png" Style="margin-left:-20px; height:40px" alt="scale"> </a> <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user"> <i class="fa fa-cog"></i> </a> 
+            </div>
+            <ul class="nav navbar-nav hidden-xs">
+               <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><font color="#000"> <i class="i i-grid"></i> </font></a> 
+                  <section class="dropdown-menu aside-lg bg-white on animated fadeInLeft">
+                     <div class="row m-l-none m-r-none m-t m-b text-center">
+                        <div class="col-xs-4">
+                           <div class="padder-v"> <a href="live_sessions.html"> <span class="m-b-xs block"> <i class="i i-signal i-2x text-primary-lt"></i> </span> 
+                              <small class="text-muted">Live Stream</small> </a> 
+                           </div>
+                        </div>
+                        <div class="col-xs-4">
+                           <div class="padder-v"> <a href="video_on_demand.html"> <span class="m-b-xs block"> <i class="i i-play i-2x text-danger-lt"></i> </span> 
+                              <small class="text-muted">EviPlayer</small> </a> 
+                           </div>
+                        </div>
+                        <div class="col-xs-4">
+                           <div class="padder-v"> <a href="initialize_record.html"> <span class="m-b-xs block"> <i class="i i-camera2  i-2x text-success-lt"></i> </span> 
+                              <small class="text-muted">EviRecorder</small> </a> 
+                           </div>
+                        </div>
+                     </div>
+                     </div> 
+                  </section>
+               </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right m-n hidden-xs nav-user user">
+               <li class="hidden-xs">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="i i-chat3"></i> <span class="badge badge-sm up bg-danger count">2</span> </a> 
+                  <section class="dropdown-menu aside-xl animated flipInY">
+                     <section class="panel bg-white">
+                        <div class="panel-heading b-light bg-light"> <strong>You have <span class="count">2</span> notifications</strong> </div>
+                        <div class="list-group list-group-alt"> <a href="#" class="media list-group-item"> <span class="pull-left thumb-sm"> <img src="images/a6.png" alt="..." class="img-circle"> </span> <span class="media-body block m-b-none"> New User Registration Is Pending Approval<br> <small class="text-muted">10 minutes ago</small> </span> </a> <a href="#" class="media list-group-item"> <span class="media-body block m-b-none">New Analytic Reports released<br> <small class="text-muted">1 hour ago</small> </span> </a> </div>
+                        <div class="panel-footer text-sm"> <a href="#" class="pull-right"><i class="fa fa-cog"></i></a> <a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a> </div>
+                     </section>
+                  </section>
+               </li>
+               <li class="dropdown" id="navBar">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+                  <span id="navPicPanel" class="thumb-sm avatar pull-left"></span> <b></b> <b class="caret"></b> </a> 
+                  <ul class="dropdown-menu animated fadeInRight">
+                     <li> <a href="profile.jsp">Profile</a> </li>
+                     <li>  <a href="#"> <span class="badge bg-danger pull-right">3</span> Notifications </a> </li>
+                     <li> <a href="signout.jsp" >Logout</a> </li>
+                  </ul>
+               </li>
+            </ul>
+         </header>
+         <section>
+            <section class="hbox stretch">
+               <!-- .aside --> 
+               <aside class="bg-light lt b-r b-light aside-md hidden-print hidden-xs" id="nav">
+                  <section class="vbox">
+                     <section class="w-f scrollable">
+                        <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">
+                           <div class="clearfix wrapper dk nav-user hidden-xs" Style="background-color:#000; ">
+                              <div class="dropdown">
+                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <span id ="picPanel" class="thumb avatar pull-left m-r"></span> 
+                                    <span class="hidden-nav-xs clear">
+                                       <span class="block m-t-xs">
+                                          <strong class="font-bold text-lt">
+                                             <font color="white">
+                                                <div id="namePanel"></div>
+                                             </font>
+                                          </strong>
+                                       </span>
+                                       <span class="text-muted text-xs block">
+                                          <b>
+                                             <font color="#c6aa5d">
+                                                <div id="rolePanel"></div>
+                                             </font>
+                                          </b>
+                                       </span>
+                                    </span>
+                                 </a>
+                              </div>
+                           </div>
+                           <!-- nav --> 
+                           <nav class="nav-primary hidden-xs">
+                              <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Start</div>
+                              <ul class="nav nav-main" data-ride="collapse" id="sideBar"></ul>
+                              <div class="line dk hidden-nav-xs"></div>
+                           </nav>
+                           <!-- / nav --> 
+                        </div>
+                     </section>
+                     <footer class="footer hidden-xs no-padder text-center-nav-xs"> <a href="index.jsp" data-toggle="ajaxModal" class="btn btn-icon icon-muted btn-inactive pull-right m-l-xs m-r-xs hidden-nav-xs"> <i class="i i-logout"></i> </a> <a href="#nav" data-toggle="class:nav-xs" class="btn btn-icon icon-muted btn-inactive m-l-xs m-r-xs"> <i class="i i-circleleft text"></i> <i class="i i-circleright text-active"></i> </a> </footer>
+                  </section>
+               </aside>
+               <!-- /.aside --> 
+               <section id="content">
+                  <section class="vbox">
+                     <header class="header bg-white b-b b-light">
+                        <br>
+                        <div style="float:left;" id="thisCaseDetails"></div>
+                        <div style="float:right;  margin-top:-5px;margin-left:100px;">
+                           <input type="hidden" value="Pause" id="butn"  onClick="changestat()"/> 
+                           <input type="text" value="00 : 00 : 00" id="stwa" Style="border:none; width:120px; font-size:15px; " readonly> 
+                           <a href="#" class="confirmation-callback" >
+                              <!--  <a id="stopRecord" class="thumb pull-right m-l m-t-xs avatar" href="initialize_record.jsp"> --> 
+                              <img src="images/stop_button.png" height="40px" Style ="margin-top:-10px; margin-left:-30px;"> 
+                           </a>
+                        </div>
+                     </header>
+                     <section class="scrollable wrapper w-f">
+                        <div class="col-md-4" Style="width:65%">
+                           <table>
+                              <tr>
+                                 <td align="center">
+                                    <form name="d">
+                                       <p><input type="hidden" size="8" name="d2"></p>
+                                    </form>
+                                 </td>
+                              </tr>
+                           </table>
+                           <script>
+                              var milisec=0;
+                              var seconds=0;
+                              document.d.d2.value='0';
+                              function display(){
+                              if (milisec>=9){
+                              milisec=0;
+                              seconds+=1;
+                              }
+                              else
+                              milisec+=1;
+                              document.d.d2.value=seconds+"."+milisec;
+                              localStorage.setItem("duration", seconds);
+                              setTimeout("display()",100);
+                              }
+                              display();
+                              
+                           </script>
+                           <div class="row" Style="width:150%;margin-top:-10px;">
+                              <div class="col-md-4">
+                                 <section class="panel b-a">
+                                    <div class="panel-heading b-b">
+                                       <a href="#" class="font-bold">Feed 1</a> 	
+                                       <div  id="mutebtn1" onClick='mutevlc1();'>
+                                          <div id="target1"  class="fa fa-volume-up"  style="font-size:20px; float:right;margin-top:-20px;">
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <center>
+                                       <div id="video1"></div>
+                                       <div id="audio1"></div>
+                                    </center>
+                                 </section>
+                              </div>
+                              <div class="col-md-4">
+                                 <section class="panel b-a">
+                                    <div class="panel-heading b-b">
+                                       <a href="#" class="font-bold">Feed 2</a>
+                                       <div  id="mutebtn2" onClick='mutevlc2();'>
+                                          <div id="target2"  class="fa fa-volume-up"  style="font-size:20px; float:right;margin-top:-20px;">
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <center>
+                                       <div id="video2"></div>
+                                       <div id="audio2"></div>
+                                    </center>
+                                 </section>
+                              </div>
+                           </div>
+                           <div class="row" Style="width:150%">
+                              <div class="col-md-4">
+                                 <section class="panel b-a">
+                                    <div class="panel-heading b-b">
+                                       <a href="#" class="font-bold">Feed 3</a> 
+                                       <div  id="mutebtn3" onClick='mutevlc3();'>
+                                          <div id="target3"  class="fa fa-volume-up"  style="font-size:20px; float:right;margin-top:-20px;">
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <center>
+                                       <div id="video3"></div>
+                                       <div id="audio3"></div>
+                                    </center>
+                                 </section>
+                              </div>
+                              <div class="col-md-4">
+                                 <section class="panel b-a">
+                                    <div class="panel-heading b-b">
+                                       <a href="#" class="font-bold">Feed 4</a> 
+                                       <div  id="mutebtn4" onClick='mutevlc4();'>
+                                          <div id="target4"  class="fa fa-volume-up"  style="font-size:20px; float:right;margin-top:-20px;" >
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <center>
+                                       <div id="video4"></div>
+                                       <div id="audio4"></div>
+                                    </center>
+                                 </section>
+                              </div>
+                           </div>
+                           <div></div>
+                        </div>
+                        <div class="col-md-4">
+                           <script type="text/javascript">  
+                              var sec = 0; 
+                              var mins = 0;  
+                              var hour = 0; 
+                              init(); 
+                              function changestat(){  
+                              stopwatch();  
+                              }  
+                              function stopwatch(){
+                              	
+                              	$('#dash').click(function(e){
+                              	    e.preventDefault();
+                              	});
+                              var x=document.getElementById('butn').value; 
+                              if (x=='Pause'){ 
+                                 sec++;  
+                                if (sec == 60) {  
+                                 sec = 0;  
+                                 mins = mins + 1;   
+                              } 
+                                else {  
+                                 mins = mins;  
+                              } 
+                                if (mins == 60) {  
+                                 mins = 0;   
+                                 hour += 1;   
+                              }  
+                              if (sec<=9) { 
+                              sec = "0" + sec;   
+                              } 
+                               var stwa=document.getElementById('stwa'); 
+                              
+                               stwa.value= ((hour<=9) ? "0"+hour : hour) + " : " + ((mins<=9) ? "0" + mins : mins) + " : " + sec;  
+                              
+                              SD=window.setTimeout("stopwatch();", 1000);  
+                              }  
+                              }  
+                              
+                           </script> 
+                           <div class="row" >
+                              <div class="">
+                                 <div class="col-sm-12" style="padding-right: 0;padding-left: 0">
+                                    <div class="panel b-a">
+                                       <div class="row m-n">
+                                          <center>
+                                             <div class="col-md-4 b-b b-r" > <a href="#" id="show_attachment" class="block padder-v hover"> <span class="i-s i-s-2x pull-left m-r-sm"> <i class="i i-hexagon2 i-s-base text-danger hover-rotate"></i> <i class="i i-camera i-1x text-white" ></i></span>  </a> </div>
+                                             <div class="col-md-4 b-b b-r" > <a href="#" id="show_logs" class="block padder-v hover"> <span class="i-s i-s-2x pull-left m-r-sm"> <i class="i i-hexagon2 i-s-base text-info hover-rotate"></i> <i class="fa fa-print fa-1x text-white"></i> </span>  </a> </div>
+                                             <div class="col-md-4 b-b b-r" > <a href="#" id="show_privatenote" class="block padder-v hover"> <span class="i-s i-s-2x pull-left m-r-sm"> <i class="i i-hexagon2 i-s-base text-success hover-rotate"></i> <i class="i i-file-plus i-1x text-white"></i> </span></a> </div>
+                                          </center>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <section class="panel panel-default">
+                                 <div class="panel-body">
+                                    <div class="tab-content" Style="border-bottom:0px solid #000; ">
+                                       <div class="tab-pane active" id="sec1" >
+                                          <div id="logArea" style="display:block;">
+                                             <div style="float:right;color: rgb(198, 170, 93);font-size:9px;">
+                                                <input type="checkbox" id="c_writer" value="Clerk" checked> &nbsp;&nbsp;<b>CLERK</b>
+                                             </div>
+                                             <h5 class="m-t-none m-b">
+                                                <div class="fa fa-print"></div>
+                                                &nbsp;&nbsp;Lognotes 
+                                             </h5>
+                                             <section class="w-f scrollable" Style="height: 210px; font-size:10px;" id="logNotes">
+                                                <p><span id='newText'>
+                                                   </span> 
+                                                </p>
+                                             </section>
+                                             <div class="row">
+                                                <div id='cssmenu'>
+                                                   <ul>
+                                                      <li class='active has-sub'>
+                                                         <a href='#'><b>Judges</b></a>
+                                                         <ul id="courtJudges">
+                                                         </ul>
+                                                      </li>
+                                                      <li class='active has-sub'>
+                                                         <a href='#'><b>Lawyers</b></a>
+                                                         <ul id="courtLawyers">
+                                                         </ul>
+                                                      </li>
+                                                      <li class='active has-sub'>
+                                                         <a href='#'><b>Partcipants</b></a>
+                                                         <ul id="courtParticipants">
+                                                         </ul>
+                                                      </li>
+                                                      <li class='active has-sub'>
+                                                         <a href='#'><b>Others</b></a>
+                                                         <ul id="courtOthers">
+                                                         </ul>
+                                                      </li>
+                                                   </ul>
+                                                </div>
+                                                <form method="post" onsubmit="return false" data-validate="parsley" action="#">
+                                                   <div class="form-group" >
+                                                      <div class="form-group" Style="display:inline-block; position:relative;margin-bottom:-30px; margin-left:10px; margin-right:20px;width:95%;">
+                                                         <textarea class="form-control" rows="2"  placeholder="Type Lognotes and press ENTER" id="logs" value='' ></textarea>
+                                                         <button Style="
+                                                            position:absolute;
+                                                            bottom:10px;
+                                                            right:10px;
+                                                            " type="submit" class="btn btn-sm btn-success pull-right text-uc m-t-n-xs" id="logButton"><strong>Enter</strong></button>
+                                                      </div>
+                                                   </div>
+                                                </form>
+                                             </div>
+                                          </div>
+                                          <div id="login_box" style="display:none">
+                                             <br>
+                                             <h5 class="m-t-none m-b">
+                                                <div class="i i-file-plus"></div>
+                                                &nbsp;&nbsp;Add Private Notes
+                                             </h5>
+                                             <form name="login_frm" id="login_frm" action="" method="post" data-validate="parsley">
+                                                <div class="form-group"> <label>Username</label> <input type="text" data-required="true" class="form-control" placeholder="Enter Username" name="login_id" id="login_id" data-type="digits" autocomplete="off" data-rangelength="[8,20]"/> </div>
+                                                <div class="form-group"> <label>Password</label> <input type="password" data-required="true" class="form-control" placeholder="Enter Password"  name="password" id="password" data-type="alphanum" data-rangelength="[8,15]" autocomplete="off"/> </div>
+                                                <div id="msgbox"></div>
+                                                <div class="checkbox m-t-lg"> 
+                                                   <button type="submit" class="btn btn-sm btn-success pull-right text-uc m-t-n-xs">
+                                                   <strong>Login</strong></button> 
+                                                </div>
+                                             </form>
+                                          </div>
+                                          <div id="note_box" style="display:none">
+                                             <br>
+                                             <h5 class="m-t-none m-b">
+                                                <div class="i i-file-plus"></div>
+                                                &nbsp;&nbsp;Add Private Notes
+                                             </h5>
+                                             <form name="note_frm" id="note_frm" action="" method="post" data-validate="parsley" >
+                                                <div class="form-group"> <textarea class="form-control" placeholder="Enter Private Notes" name="private_notes" id="private_notes" data-required="true" data-type="digits" data-rangelength="[2,25]"></textarea> </div>
+                                                <div id="msgbox_add"></div>
+                                                <div class="checkbox m-t-lg"> 
+                                                   <button type="submit" class="btn btn-sm btn-success pull-right text-uc m-t-n-xs">
+                                                   <strong>Add</strong></button> 
+                                                </div>
+                                             </form>
+                                          </div>
+                                          <div id="confirm_box" style="display:none">
+                                             <br><br>
+                                             <form name="con_frm" id="con_frm" action="" method="post" data-validate="parsley">
+                                                <div class="glyphicon glyphicon-saved"></div>
+                                                &nbsp;&nbsp;Private Note Added!!
+                                                <button type="button" class="btn btn-default" data-dismiss="modal" Style="float:right" id="done_private">OK</button>
+                                             </form>
+                                          </div>
+                                          <div id="camera">
+                                             <br>
+                                             <div id="screen" Style="display:none"><br>
+                                             </div>
+                                             <div id="buttons" Style="display:block">
+                                                <div id="snap_button" Style="display:none;margin-top:100px;">
+                                                   <button type="submit" class="btn btn-sm btn-success pull-right text-uc m-t-n-xs" id="shootButton" Style="margin-bottom:20px;">
+                                                      <strong>
+                                                         <div class="i i-camera"></div>
+                                                         &nbsp;&nbsp;Capture
+                                                      </strong>
+                                                   </button>
+                                                   <button type="reset" data-dismiss="modal" class="btn btn-sm btn-default pull-left text-uc m-t-n-xs" Style="margin-bottom:20px; float:left;" id="cancButton">
+                                                      <strong>
+                                                         <div class="i i-cross2"></div>
+                                                         &nbsp;&nbsp;Cancel
+                                                      </strong>
+                                                   </button>
+                                                </div>
+                                                <div id="upload_button" Style="display:none;margin-top:100px;">
+                                                   <button type="submit" class="btn btn-sm btn-danger pull-right text-uc m-t-n-xs" id="uploadButton" Style="margin-bottom:20px;">
+                                                      <strong>
+                                                         <div class="fa fa-save"></div>
+                                                         &nbsp;&nbsp;Save
+                                                      </strong>
+                                                   </button>
+                                                   <button type="reset" class="btn btn-sm btn-default pull-left text-uc m-t-n-xs" Style="margin-bottom:20px;" id="cancuButton">
+                                                      <strong>
+                                                         <div class="i i-cross2"></div>
+                                                         &nbsp;&nbsp;Cancel
+                                                      </strong>
+                                                   </button>
+                                                </div>
+                                                <div id="attachmentform" Style="display:none;">
+                                                   <h5 class="m-t-none m-b">
+                                                      <div class="i i-file-plus"></div>
+                                                      &nbsp;&nbsp;Enter Attachment Details
+                                                   </h5>
+                                                   <form name="atta_frm" id="atta_frm" action="#" method="post" data-validate="parsley">
+                                                      <div class="form-group"> <label>Attachment Name</label> <input type="text" class="form-control" placeholder="Enter Attachment Name" name="atta_name" id="atta_name" data-required="true" data-type="digits" data-rangelength="[2,15]"/> </div>
+                                                      <div class="form-group"> <label>Attachment Description</label> <input type="text" class="form-control" placeholder="Enter Attachment Description"  name="atta_desc" id="atta_desc" data-required="true" data-type="digits" data-rangelength="[2,35]"/> </div>
+                                                      <div class="checkbox m-t-lg">
+                                                         <button type="submit" class="btn btn-sm btn-danger pull-right text-uc m-t-n-xs" Style="margin-bottom:10px;" id="attachmentSave">
+                                                            <strong>
+                                                               <div class="fa fa-save"></div>
+                                                               &nbsp;&nbsp;Save
+                                                            </strong>
+                                                         </button>
+                                                         <button type="reset" class="btn btn-sm btn-default pull-left text-uc m-t-n-xs" Style="margin-bottom:10px;" id="cancaButton">
+                                                            <strong>
+                                                               <div class="i i-cross2"></div>
+                                                               &nbsp;&nbsp;Cancel
+                                                            </strong>
+                                                         </button>
+                                                      </div>
+                                                   </form>
+                                                   <div id="msgboxattac"></div>
+                                                </div>
+                                                <div id="atta_confirm_box" style="display:none">
+                                                   <br><br>
+                                                   <form name="ata_con_frm" id="atta_con_frm" action="" method="post" data-validate="parsley">
+                                                      <div class="glyphicon glyphicon-saved"></div>
+                                                      &nbsp;&nbsp;Attachment Saved!!
+                                                      <button type="button" class="btn btn-default" data-dismiss="modal" Style="float:right" id="save_conf">OK</button>
+                                                   </form>
+                                                   <br><br>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </section>
+                              <!-- / .nav-justified --> 
+                           </div>
+                        </div>
+                     </section>
+                  </section>
+               </section>
+               <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a> 
+            </section>
+         </section>
+      </section>
+      </section> <!-- Bootstrap --> 
+      <div style="margin-top:130px;" data-backdrop="static" class="modal fade" id="liveModal" tabindex="-1" role="dialog" 
+         aria-labelledby="myModalLabel" aria-hidden="true">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <br>
+                  <div style="float:right;" ><img src="images/logo.png" Style="height:40px" alt="scale"></div>
+                  <br><br>
+               </div>
+               <div class="modal-body">
+                  <div id="liveClazModalBody">
+                     <center>
+                        <div class="glyphicon glyphicon-saved" style="font-size:50px;"></div>
+                        <h4>The Case Saved Successfully!!!</h4>
+                     </center>
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <div style="float:left;"> 
+                  </div>
+                  <!--             <button type="button" Style="border:none;background-color:#000" class="btn btn-primary" onclick="uploadFeed()" id="startClassButton">
+                     -->            
+                  <button type="button" Style="border:none;background-color:#000" class="btn btn-primary" data-dismiss="modal" id="startClassButton" onclick="endCase()">
+                  OK
+                  </button>         
+               </div>
+            </div>
+            <!-- /.modal-content -->
+         </div>
+         <!-- /.modal --> 
+      </div>
+      <script src="js/parsley/parsley.min.js"></script>
+      <script src="js/wizard/jquery.bootstrap.wizard.js"></script>
+      <script src="js/wizard/demo.js"></script> 
+      <!-- App --> 
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/bootstrap-confirmation.js"></script>
+   </body>
+</html>

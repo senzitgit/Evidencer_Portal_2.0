@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" class="app">
+   <head>
+      <meta charset="utf-8" />
+      <title>Evidencer | Video On Demand</title>
+      <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+      <link rel="stylesheet" href="css/app.v1.css" type="text/css" />
+      <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+      <link rel="icon" href="favicon.ico" type="image/x-icon">
+      <link rel="stylesheet" href="css/sidebar.css" type="text/css" />
+      <script src="js/1.11.1/jquery.min.js"></script>
+      <script src="js/Controllers/webServerService.js"></script>
+      <script src="js/Controllers/headerController.js"></script>
+      <script src="js/Controllers/playerController.js"></script>
+      <script src="js/Controllers/videoController.js"></script>
+     <script src="js/Controllers/sideBarController.js"></script>
+      <!-- POPUP -->
+      <link rel="stylesheet" type="text/css" href="libraries/popup/jquery.fancybox.css" />
+      <link rel="stylesheet" type="text/css" href="libraries/popup/jquery.fancybox-buttons.css" />
+      <script src="libraries/popup/jquery.js"></script>
+      <script type="text/javascript" src="libraries/popup/jquery.fancybox.js"></script>
+   <body>
+      <section class="vbox">
+         <header class="bg-white header header-md navbar navbar-fixed-top-xs box-shadow">
+            <div class="navbar-header aside-md dk"> <a class="btn btn-link visible-xs" > 
+               <i class="fa fa-bars"></i> </a> <a href="dashboard.html" class="navbar-brand" style="display:inline !important;"> <img src="images/logo.png" Style="margin-left:-20px; height:40px" alt="scale"> </a> <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user"> <i class="fa fa-cog"></i> </a> 
+            </div>
+            <ul class="nav navbar-nav hidden-xs">
+               <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><font color="#000"> <i class="i i-grid"></i> </font></a> 
+                  <section class="dropdown-menu aside-lg bg-white on animated fadeInLeft">
+                     <div class="row m-l-none m-r-none m-t m-b text-center">
+                        <div class="col-xs-4">
+                           <div class="padder-v"> <a href="live_sessions.html"> <span class="m-b-xs block"> <i class="i i-signal i-2x text-primary-lt"></i> </span> 
+                              <small class="text-muted">Live Stream</small> </a> 
+                           </div>
+                        </div>
+                        <div class="col-xs-4">
+                           <div class="padder-v"> <a href="video_on_demand.html"> <span class="m-b-xs block"> <i class="i i-play i-2x text-danger-lt"></i> </span> 
+                              <small class="text-muted">EviPlayer</small> </a> 
+                           </div>
+                        </div>
+                        <div class="col-xs-4">
+                           <div class="padder-v"> <a href="initialize_record.html"> <span class="m-b-xs block"> <i class="i i-camera2  i-2x text-success-lt"></i> </span> 
+                              <small class="text-muted">EviRecorder</small> </a> 
+                           </div>
+                        </div>
+                     </div>
+                     </div> 
+                  </section>
+               </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right m-n hidden-xs nav-user user">
+               <li class="hidden-xs">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="i i-chat3"></i> <span class="badge badge-sm up bg-danger count">2</span> </a> 
+                  <section class="dropdown-menu aside-xl animated flipInY">
+                     <section class="panel bg-white">
+                        <div class="panel-heading b-light bg-light"> <strong>You have <span class="count">2</span> notifications</strong> </div>
+                        <div class="list-group list-group-alt"> <a href="#" class="media list-group-item"> <span class="pull-left thumb-sm"> <img src="images/a6.png" alt="..." class="img-circle"> </span> <span class="media-body block m-b-none"> New User Registration Is Pending Approval<br> <small class="text-muted">10 minutes ago</small> </span> </a> <a href="#" class="media list-group-item"> <span class="media-body block m-b-none">New Analytic Reports released<br> <small class="text-muted">1 hour ago</small> </span> </a> </div>
+                        <div class="panel-footer text-sm"> <a href="#" class="pull-right"><i class="fa fa-cog"></i></a> <a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a> </div>
+                     </section>
+                  </section>
+               </li>
+               <li class="dropdown" id="navBar">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+                  <span id="navPicPanel" class="thumb-sm avatar pull-left"></span> <b></b> <b class="caret"></b> </a> 
+                  <ul class="dropdown-menu animated fadeInRight">
+                     <li> <a href="profile.html">Profile</a> </li>
+                     <li>  <a href="#"> <span class="badge bg-danger pull-right">3</span> Notifications </a> </li>
+                     <li> <a href="signout.html" >Logout</a> </li>
+                  </ul>
+               </li>
+            </ul>
+         </header>
+         <section>
+            <section class="hbox stretch">
+               <!-- .aside --> 
+               <aside class="bg-light lt b-r b-light aside-md hidden-print hidden-xs" id="nav">
+                  <section class="vbox">
+                     <section class="w-f scrollable">
+                        <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">
+                           <div class="clearfix wrapper dk nav-user hidden-xs" Style="background-color:#000; ">
+                              <div class="dropdown">
+                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <span id ="picPanel" class="thumb avatar pull-left m-r"></span> 
+                                    <span class="hidden-nav-xs clear">
+                                       <span class="block m-t-xs">
+                                          <strong class="font-bold text-lt">
+                                             <font color="white">
+                                                <div id="namePanel"></div>
+                                             </font>
+                                          </strong>
+                                       </span>
+                                       <span class="text-muted text-xs block">
+                                          <b>
+                                             <font color="#c6aa5d">
+                                                <div id="rolePanel"></div>
+                                             </font>
+                                          </b>
+                                       </span>
+                                    </span>
+                                 </a>
+                              </div>
+                           </div>
+                           <!-- nav --> 
+                           <nav class="nav-primary hidden-xs">
+                              <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Start</div>
+                              <ul class="nav nav-main" data-ride="collapse" id="sideBar"></ul>
+                              <div class="line dk hidden-nav-xs"></div>
+                           </nav>
+                           <!-- / nav --> 
+                        </div>
+                     </section>
+                     <footer class="footer hidden-xs no-padder text-center-nav-xs"> <a href="index.html" data-toggle="ajaxModal" class="btn btn-icon icon-muted btn-inactive pull-right m-l-xs m-r-xs hidden-nav-xs"> <i class="i i-logout"></i> </a> <a href="#nav" data-toggle="class:nav-xs" class="btn btn-icon icon-muted btn-inactive m-l-xs m-r-xs"> <i class="i i-circleleft text"></i> <i class="i i-circleright text-active"></i> </a> </footer>
+                  </section>
+               </aside>
+               <!-- /.aside --> 
+               <section id="content">
+                  <section class="vbox">
+                     <section class="scrollable wrapper w-f">
+                        <div class="row">
+                           <div class="col-md-4" >
+                              <section class="panel b-a">
+                                 <div class="panel-heading b-b" id="searchHeader">
+                                    <a href="#" class="font-bold">Search Cases</a> 
+                                 </div>
+                                 <div class="panel-body" id="simpleSForm" style="display:block;">
+                                    <form ACTION="#" METHOD="post" data-validate="parsley" name="simple_frm" id="simple_frm">
+                                       <div class="input-group"> 
+                                          <input type="text" class="form-control input-sm btn-rounded" placeholder="Search using Case Number" id="caseNoSimple" name="caseNoSimple"  data-required="true" data-type="digits" data-rangelength="[2,10]"> 
+                                          <span class="input-group-btn"> 
+                                          <button type="submit" class="btn btn-default btn-sm btn-rounded" data-required="true">
+                                          <i class="fa fa-search"></i></button> <br><br>
+                                          </span> 
+                                       </div>
+                                    </form>
+                                 </div>
+                                 <br>
+                                 <div id="caseProgress" style="display:block;margin-left:10px;"></div>
+                                 <section class="w-f scrollable" Style="max-height: 400px;">
+                                    <div style="margin-left:15px;margin-right:15px;" id="dynamicFileld">
+                                       <center>
+                                          <img src="images/or.png" Style="width:100%">
+                                       </center>
+                                       <a href="#" class="font-bold">Advanced Search</a><br><br>
+                                       <form ACTION="#" METHOD="post" data-validate="parsley" name="adv_frm" id="adv_frm">
+                                          <div class="input-group" Style="width:100%">
+                                             <input type="text" class="form-control input-sm" placeholder="Case Number" NAME="caseNo" id="caseNo" data-type="digits" data-rangelength="[2,10]"> <br><br>
+                                             <input type="text" class="form-control input-sm" placeholder="Case Title" NAME="caseTitle" id="caseTitle" data-type="digits" data-rangelength="[2,15]" > <br><br>
+                                             <input class="input-sm input-s datepicker-input form-control" size="16" type="text"  data-date-format="yyyy-mm-dd" placeholder="Case Date" name="caseDate" id="caseDate" readonly><br><br>
+                                             <select name="caseType" class="form-control m-b" id="caseType">
+                                                <option value="" disabled selected>Case Type</option>
+                                             </select>
+                                             <br><br> 
+                                             <input type="submit" class="form-control" value="Search">
+                                          </div>
+                                       </form>
+                                       <br> 
+                                    </div>
+                                 </section>
+                                 <section class="w-f scrollable" Style="height: 10px;">
+                                    <div style="margin-left:15px;margin-right:15px;">
+                                    </div>
+                                 </section>
+                              </section>
+                              <!-- inside column -->
+                              <div id="caseDetailsPanel" style="display:none;">
+                                 <section class="panel panel-default">
+                                    <header class="panel-heading bg-light">
+                                       <ul class="nav nav-tabs nav-justified">
+                                          <li class="active">
+                                             <a href="#sec1" data-toggle="tab">
+                                                <div class="fa fa-legal" "text-muted"></div>
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="#sec2" data-toggle="tab">
+                                                <div class="fa fa-paperclip" "text-muted"></div>
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="#sec3" data-toggle="tab">
+                                                <div class="fa fa-file" "text-muted"></div>
+                                             </a>
+                                          </li>
+                                       </ul>
+                                    </header>
+                                    <form>
+                                       <input type="hidden" id="txt" />
+                                       <input type="hidden" id="txt1" />
+                                    </form>
+                                    <div class="panel-body">
+                                       <div class="tab-content" Style="border-bottom:0px solid #000; min-height:150px;">
+                                          <div class="tab-pane active" id="sec1">
+                                             <div class="row">
+                                                <div class="col-lg-6">
+                                                   <h5 class="m-t-none m-b">
+                                                      <div class="fa fa-legal"></div>
+                                                      &nbsp;&nbsp;Lognotes
+                                                   </h5>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                   <span style="float:right;"  class="badge bg-primary">
+                                                      <a href="log_notes.html" target="_blank">
+                                                         <div class="fa fa-print"></div>
+                                                      </a>
+                                                   </span>
+                                                </div>
+                                             </div>
+                                             <section class="content scrollable" Style="height: 150px; font-size:10px;" id="logNotes">
+                                                <div id="loadLogs"></div>
+                                             </section>
+                                          </div>
+                                          <div class="tab-pane" id="sec2">
+                                             <h5vclass="m-t-none m-b"> 
+                                             <div class="fa fa-paperclip"></div>
+                                             &nbsp;&nbsp;Attachments</h5><br>
+                                             <div id="loadAttachment"></div>
+                                          </div>
+                                          <div class="tab-pane" id="sec3">
+                                             <div id="login_box" style="display:block">
+                                                <h5 class="m-t-none m-b">
+                                                   <div class="i i-file-plus"></div>
+                                                   &nbsp;&nbsp;Private Notes
+                                                </h5>
+                                                <form name="login_frm" id="login_frm" action=#"" method="post" data-validate="parsley">
+                                                   <div class="form-group">  <input type="text" class="form-control" placeholder="Enter Username" name="login_id" id="login_id" data-required="true"/> </div>
+                                                   <div class="form-group">  <input type="password" class="form-control" placeholder="Enter Password"  name="password" id="password" data-required="true"/> </div>
+                                                   <div id="msgbox"></div>
+                                                   <div class="checkbox m-t-lg"> 
+                                                      <button type="submit" class="btn btn-sm btn-success pull-right text-uc m-t-n-xs">
+                                                      <strong>Login</strong></button> 
+                                                   </div>
+                                                </form>
+                                             </div>
+                                             <div id="note_box" style="display:none">
+                                                <h5 class="m-t-none m-b">
+                                                   <div class="i i-file-plus"></div>
+                                                   &nbsp;&nbsp;Private Notes
+                                                </h5>
+                                                <section class="content scrollable" Style="height: 150px; font-size:10px;" id="privateNotes">
+                                                   <div id="loadPrivate"></div>
+                                                </section>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </section>
+                              </div>
+                           </div>
+                           <!-- column-->
+                           <div class="col-lg-8" >
+                              <div class="row" >
+                                 <div class="col-lg-6" >
+                                    <section class="panel b-a">
+                                       <div class="panel-heading b-b">
+                                          <a href="#" class="font-bold">Feed 1</a> 
+                                          <div  id="mutebtn1">
+                                             <div  class="fa fa-volume-up"  style="font-size:20px; float:right;margin-top:-20px;">
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <center>
+                                          <div id="feed1"><img src="images/poster.jpg" height="210px"></div>
+                                       </center>
+                                    </section>
+                                 </div>
+                                 <div class="col-lg-6" >
+                                    <section class="panel b-a">
+                                       <div class="panel-heading b-b">
+                                          <a href="#" class="font-bold">Feed 2</a>
+                                          <div  id="mutebtn2">
+                                             <div  class="fa fa-volume-up"  style="font-size:20px; float:right;margin-top:-20px;">
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <center>
+                                          <div id="feed2"><img src="images/poster.jpg" height="210px"></div>
+                                       </center>
+                                    </section>
+                                 </div>
+                              </div>
+                              <div class="row" >
+                                 <div class="col-lg-6" >
+                                    <section class="panel b-a">
+                                       <div class="panel-heading b-b">
+                                          <a href="#" class="font-bold">Feed 3</a>
+                                          <div  id="mutebtn3">
+                                             <div  class="fa fa-volume-up"  style="font-size:20px; float:right;margin-top:-20px;">
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <center>
+                                          <div id="feed3"><img src="images/poster.jpg" height="210px"></div>
+                                       </center>
+                                    </section>
+                                 </div>
+                                 <div class="col-lg-6" >
+                                    <section class="panel b-a">
+                                       <div class="panel-heading b-b">
+                                          <a href="#" class="font-bold">Feed 4</a>
+                                          <div  id="mutebtn4">
+                                             <div  class="fa fa-volume-up"  style="font-size:20px; float:right;margin-top:-20px;">
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <center>
+                                          <div id="feed4"><img src="images/poster.jpg" height="210px"></div>
+                                       </center>
+                                    </section>
+                                 </div>
+                              </div>
+                              <!-- video row -->	  
+                              <div class="row" style="display:none;" id="playerControllers">
+                                 <section class="panel panel-info" style=" margin-top:-10px; margin-left:15px;margin-right:15px;border:1px solid #F2F1F1">
+                                    <div class="panel-body">
+                                       <div class="col-lg-2" style="width:8%;">
+                                          <a href="#" id="playpausebtn">
+                                             <div class="fa fa-pause"  style="font-size:25px;"></div>
+                                          </a>
+                                       </div>
+                                       <div class="col-lg-8" style="width:45%;">
+                                          <input style="margin-top:10px;" id="seekslider" type="range" min="0" max="100" value="0" step="1">
+                                       </div>
+                                       <div class="col-lg-2" Style="width:20%;margin-top:5px;" >
+                                          <span   id="curtimetext">00:00</span> / <span id="durtimetext">00:00</span>	
+                                       </div>
+                                       <div class="col-lg-2" style="width:4%;">
+                                          <div class="fa fa-volume-up"  style="font-size:20px; margin-top:5px;"></div>
+                                       </div>
+                                       <div class="col-lg-2" Style="width:20%;">
+                                          <input style="margin-top:10px;" id="volumeslider" type="range" min="0" max="100" value="100" step="1">
+                                       </div>
+                                    </div>
+                                 </section>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- row-->
+                     </section>
+                     <!-- wraper-->
+                  </section>
+                  <!-- vbox -->
+               </section>
+               <!-- Content -->
+               <!-- App --> 
+               <script src="js/bootstrap.js"></script> 
+               <script src="js/datepicker/bootstrap-datepicker.js"></script>
+               <script src="js/parsley/parsley.min.js"></script>
+               <script src="js/parsley/parsley.extend.js"></script> 
+               <script src="js/app.plugin.js"></script>
+            </section>
+         </section>
+      </section>
+   </body>
+</html>
